@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .quotetable2 tr:nth-child(even){
+         background-color:lightblue;
+        }
+    </style>
+    <script>
+
+        async function populateTable() {
+
+            let htmlString = "<table class='quotetable2' style='border:1px solid'><thead style='background-color:lightskyblue;'><tr><th>Id</th><th>FirstName</th><th>LastName</th><th>Registration</th><th>BodyType</th><th>MarketValue</th> <th>Owner</th><th>OtherVehicles</th><th>DateRegistered</th><th>EngineCC</th><th>ManufacturersSpec</th><th>Accidents</th><th>Quote</th></tr></thead>";
+            fetch('quotes').then(function(result) {
+                return result.json();
+            }).then(function (quotes) {
+
+                quotes.map((quote) => {
+                    console.log("Processing a quote" + quote.firstName);
+                    htmlString+="<tr id=quotesTableTR>";
+                    htmlString+="<td>"+ quote.id + "</td>";
+                    htmlString+="<td>"+ quote.firstName + "</td>";
+                    htmlString+="<td>"+ quote.lastName + "</td>";
+                     htmlString+="<td>"+ quote.registration + "</td>";
+                      htmlString+="<td>"+ quote.bodytype + "</td>";
+                       htmlString+="<td>"+"£"+ quote.marketvalue + "</td>";
+                        htmlString+="<td>"+ quote.owner + "</td>";
+                         htmlString+="<td>"+ quote.othervehicles + "</td>";
+                          htmlString+="<td>"+ quote.registereddate + "</td>";
+                           htmlString+="<td>"+ quote.enginecc + "</td>";
+                            htmlString+="<td>"+ quote.manufactureresspec + "</td>";
+                            htmlString+="<td>"+ quote.accident + "</td>";
+                    htmlString+="<td>"+"£"+ quote.quote + "</td>";
+                    htmlString+="</tr>";
+                });
+
+                document.getElementById("content").innerHTML = htmlString;
+            });
+
+
+
+
+
+        }
+
+    </script>
+
+
+    <meta charset="UTF-8">
+    <title>All Quotes</title>
+</head>
+<body onLoad="populateTable()">
+<h1>All Quotes</h1>
+
+<div id="content">
+
+</div>
+
+</body>
+</html>
