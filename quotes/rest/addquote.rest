@@ -5,12 +5,12 @@ Content-Type: application/json
   "firstName": "Gerard",
   "lastName": "Hackett",
   "registration": "LAH124",
-  "bodystyle": "Hatchback",
+  "bodytype": "Hatchback",
   "marketvalue": 5000,
   "owner": "Spouse",
   "othervehicles": 4,
-  "registrereddate": "12/4/19",
+  "registereddate": "12/4/19",
   "enginecc": 1500,
-  "manufacturersspec": "Yes",
+  "manufactureresspec": "Yes",
   "accident": "No"
 }
