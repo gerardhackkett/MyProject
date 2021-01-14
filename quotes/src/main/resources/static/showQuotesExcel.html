@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .testTable tr:nth-child(even){
+            background-color:lightblue;
+        }
+    </style>
+
+    <script>
+
+        async function populateTable() {
+
+            //let htmlString2 = "<table class='testTable2'  summary=\"Code page support in different versions of MS Windows.\" rules=\"groups\" frame=\"hsides\"  style='border:1px solid'><thead style='background-color:lightskyblue;'><tr><th>Id</th><th>FirstName</th><th>LastName</th><th>Registration</th><th>BodyType</th><th>MarketValue</th> <th>Owner</th><th>OtherVehicles</th><th>DateRegistered</th><th>EngineCC</th><th>ManufacturersSpec</th><th>Accidents</th><th>Quote</th></tr></thead>";
+            let htmlString = "<table id='testTable' summary=\"Gerard Hackett Quotes.\" rules=\"groups\" frame=\"hsides\" border=\"2\"><caption>Table of all quotes</caption>";
+            htmlString+="<colgroup align='center'></colgroup>";
+            htmlString+="<colgroup align='left'></colgroup>";
+            htmlString+="<colgroup align='left'></colgroup>";
+            htmlString+="<colgroup align='left'></colgroup>";
+            htmlString+="<colgroup align='left'></colgroup>";
+            htmlString+="<colgroup align='left'></colgroup>";
+            htmlString+="<colgroup align='left'></colgroup>";
+            htmlString+="<colgroup align='left'></colgroup>";
+            htmlString+="<colgroup align='left'></colgroup>";
+            htmlString+="<colgroup align='left'></colgroup>";
+            htmlString+="<colgroup align='left'></colgroup>";
+            htmlString+="<colgroup align='left'></colgroup>";
+            htmlString+="<colgroup align='left'></colgroup>";
+            htmlString+="<colgroup align='left'></colgroup>";
+            htmlString+="<colgroup align='left'></colgroup>";
+            htmlString+="<colgroup align='left'></colgroup>";
+            htmlString+="<thead valign='top'>";
+            htmlString+="<tr>";
+            htmlString+="<th>ID</th>";
+            htmlString+="<th>FirstName</th>";
+            htmlString+="<th>LastName</th>";
+            htmlString+="<th>Registration</th>";
+            htmlString+="<th>BodyType</th>";
+            htmlString+="<th>MarketValue</th><th>Owner</th><th>Other Vehicles</th><th>Date Registered</th><th>Engine CC</th><th>Manufacturers Spec</th><th>Accidents</th><th>Quote</th>";
+            htmlString+="</tr>";
+            htmlString+="</thead>";
+
+            fetch('quotes').then(function(result) {
+                return result.json();
+            }).then(function (quotes) {
+
+                quotes.map((quote) => {
+                    console.log("Processing a quote" + quote.firstName);
+
+                    htmlString+="<tbody>";
+                    htmlString+="<tr>";
+                    htmlString+="<td>"+ quote.id + "</td>";
+                    htmlString+="<td>"+ quote.firstName + "</td>";
+                    htmlString+="<td>"+ quote.lastName + "</td><td>"+ quote.registration + "</td><td>"+ quote.bodytype + "</td><td>"+"£"+ quote.marketvalue + "</td><td>"+ quote.owner + "</td><td>"+ quote.othervehicles + "</td><td>"+ quote.registereddate + "</td><td>"+ quote.enginecc +"cc"+ "</td><td>"+ quote.manufactureresspec + "</td><td>"+ quote.accident + "</td><td style=\"background-color: #00f; color: #fff\">"+ "£"+ quote.quote + "</td>";
+                    htmlString+="</tr>";
+                    htmlString+="</tbody>";
+
+                });
+
+                document.getElementById("content").innerHTML = htmlString;
+            });
+
+
+
+
+
+        }
+
+    </script>
+
+    <script type="text/javascript">
+        var tableToExcel = (function() {
+            var uri = 'data:application/vnd.ms-excel;base64,'
+                , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head><body><table>{table}</table></body></html>'
+                , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+                , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+            return function(table, name) {
+                if (!table.nodeType) table = document.getElementById(table)
+                var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+                window.location.href = uri + base64(format(template, ctx))
+            }
+        })()
+    </script>
+
+    <meta charset="UTF-8">
+    <title>All Quotes</title>
+</head>
+<body onLoad="populateTable()">
+<h1>All Quotes</h1>
+
+<div id="content">
+
+</div>
+
+<br>
+<input type="button" onclick="tableToExcel('testTable', 'Gerard Hackett Quotes Table')" value="Export to Excel">
+
+
+</body>
+</html>

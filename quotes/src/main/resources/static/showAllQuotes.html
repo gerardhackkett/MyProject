@@ -2,15 +2,27 @@
 <html lang="en">
 <head>
     <style>
-        .quotetable2 tr:nth-child(even){
+        .testTable2 tr:nth-child(even){
          background-color:lightblue;
         }
+        h1{
+            padding-left: 40%;
+        }
+
+        div#content{
+            padding-left: 22%;
+            padding-top: 2%;
+        }
+
+
+
     </style>
+
     <script>
 
         async function populateTable() {
 
-            let htmlString = "<table class='quotetable2' style='border:1px solid'><thead style='background-color:lightskyblue;'><tr><th>Id</th><th>FirstName</th><th>LastName</th><th>Registration</th><th>BodyType</th><th>MarketValue</th> <th>Owner</th><th>OtherVehicles</th><th>DateRegistered</th><th>EngineCC</th><th>ManufacturersSpec</th><th>Accidents</th><th>Quote</th></tr></thead>";
+            let htmlString = "<table class='testTable2'  summary=\"Code page support in different versions of MS Windows.\" rules=\"groups\" frame=\"hsides\"  style='border:1px solid'><thead style='background-color:lightskyblue;'><tr><th>Id</th><th>FirstName</th><th>LastName</th><th>Registration</th><th>BodyType</th><th>MarketValue</th> <th>Owner</th><th>OtherVehicles</th><th>DateRegistered</th><th>EngineCC</th><th>ManufacturersSpec</th><th>Accidents</th><th>Quote</th></tr></thead>";
             fetch('quotes').then(function(result) {
                 return result.json();
             }).then(function (quotes) {
@@ -46,6 +58,7 @@
     </script>
 
 
+
     <meta charset="UTF-8">
     <title>All Quotes</title>
 </head>
@@ -55,6 +68,7 @@
 <div id="content">
 
 </div>
+
 
 </body>
 </html>
