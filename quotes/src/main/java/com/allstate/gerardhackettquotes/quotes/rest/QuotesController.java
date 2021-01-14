@@ -22,6 +22,8 @@ public class QuotesController {
     }
 
 
+
+
     @GetMapping
     public Collection<Quote> getAllQuotes() {
         return quoteService.getAllQuotes();

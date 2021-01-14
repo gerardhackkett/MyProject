@@ -1,1 +1,1 @@
-GET http://localhost:8080/quotes/Hackett
+GET http://localhost:8080/quotes/HACKETT

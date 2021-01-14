@@ -2,8 +2,8 @@ POST http://localhost:8080/quotes
 Content-Type: application/json
 
 {
-  "firstName": "Gerard",
-  "lastName": "Hackett",
+  "firstName": "Jimi",
+  "lastName": "Hendrix",
   "registration": "LAH124",
   "bodytype": "Hatchback",
   "marketvalue": 5000,

@@ -35,6 +35,8 @@ public class QuoteServiceImpl implements QuoteService {
     }
 
 
+
+
     private Quote calculateQuote(Quote quotation) {
 
         double  householdVehiclesFactor;

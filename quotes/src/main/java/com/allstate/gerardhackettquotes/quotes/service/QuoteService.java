@@ -12,4 +12,5 @@
     Collection<Quote> getAllQuotes();
 
     Collection<Quote> getQuotesByLastName(String lastName);
+
 }
